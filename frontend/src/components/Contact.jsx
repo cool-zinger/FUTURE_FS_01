@@ -11,10 +11,12 @@ function Contact() {
   const [loading, setLoading] = useState(false);
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    const { name, value } = e.target;
+
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
   };
 
   const handleSubmit = async (e) => {
@@ -25,19 +27,23 @@ function Contact() {
 
     try {
       const response = await fetch(
-  `${import.meta.env.VITE_API_URL}/api/contact`,
-  {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(formData),
-      });
-
-      const data = await response.json();
+        "https://formspree.io/f/xqpkdady",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            message: formData.message,
+          }),
+        }
+      );
 
       if (!response.ok) {
-        throw new Error(data.message || "Failed to send message");
+        throw new Error("Failed to send message");
       }
 
       setStatus("Message sent successfully!");
@@ -48,9 +54,8 @@ function Contact() {
         message: "",
       });
     } catch (error) {
-      console.error("Contact error:", error);
-
-      setStatus("Failed to send message.");
+      console.error("Formspree error:", error);
+      setStatus("Failed to send message. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -62,7 +67,6 @@ function Contact() {
       className="min-h-screen flex items-center justify-center px-6 py-20 bg-slate-950"
     >
       <div className="w-full max-w-2xl">
-
         <div className="text-center mb-10">
           <p className="text-blue-500 font-semibold uppercase tracking-wider">
             Contact
@@ -81,7 +85,6 @@ function Contact() {
           onSubmit={handleSubmit}
           className="bg-slate-900 border border-slate-800 p-8 rounded-2xl shadow-xl"
         >
-
           <div className="mb-6">
             <label
               htmlFor="name"
@@ -145,7 +148,7 @@ function Contact() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-semibold py-3 rounded-lg transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Sending..." : "Send Message"}
           </button>
@@ -161,7 +164,6 @@ function Contact() {
               {status}
             </p>
           )}
-
         </form>
       </div>
     </section>
