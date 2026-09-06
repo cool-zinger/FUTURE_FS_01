@@ -1,99 +1,91 @@
-import {
-  ArrowDown,
-  Download,
-  Github,
-  Linkedin
-} from "lucide-react";
-
-import { personalInfo } from "../data/portfolioData";
-
-export default function Hero() {
-  const scrollToProjects = () => {
-    document
-      .getElementById("projects")
-      ?.scrollIntoView({ behavior: "smooth" });
-  };
+function Hero() {
+  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
 
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center overflow-hidden"
+      className="min-h-screen bg-slate-950 flex items-center px-6 pt-24"
     >
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10">
-        <div className="hero-grid" />
+      <div className="max-w-7xl mx-auto w-full">
 
-        <div className="glow glow-one" />
-        <div className="glow glow-two" />
-      </div>
-
-      <div className="section-container pt-24">
         <div className="max-w-4xl">
 
-          <div className="mb-6 inline-flex items-center gap-3 rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-sm text-zinc-300 backdrop-blur">
-            <span className="h-2 w-2 rounded-full bg-green-400 animate-pulse" />
-            Available for opportunities
-          </div>
-
-          <p className="mb-4 text-sm uppercase tracking-[0.3em] text-indigo-400">
-            Hello, I'm
+          <p className="text-blue-500 uppercase tracking-[0.3em] font-semibold mb-4">
+            Full Stack Developer • AI Enthusiast
           </p>
 
-          <h1 className="text-5xl font-bold leading-tight tracking-tight text-white sm:text-6xl lg:text-8xl">
-            {personalInfo.name}
-            <span className="text-gradient">.</span>
+          <h1 className="text-5xl md:text-7xl font-bold text-white leading-tight">
+            Hi, I'm{" "}
+            <span className="text-blue-500">
+              Kaustav Nandi
+            </span>
           </h1>
 
-          <h2 className="mt-5 text-2xl font-semibold text-zinc-300 sm:text-3xl">
-            {personalInfo.headline}
+          <h2 className="text-2xl md:text-3xl text-gray-300 mt-5">
+            Building intelligent applications and modern digital experiences.
           </h2>
 
-          <p className="mt-6 max-w-2xl text-base leading-8 text-zinc-400 sm:text-lg">
-            {personalInfo.summary}
+          <p className="text-gray-400 mt-7 text-lg leading-relaxed max-w-3xl">
+            I work with Python, MySQL, React, Node.js, artificial intelligence
+            and computer vision to build practical software projects that solve
+            real-world problems.
           </p>
 
-          <div className="mt-9 flex flex-wrap gap-4">
-
-            <button
-              onClick={scrollToProjects}
-              className="primary-button"
-            >
-              View My Work
-              <ArrowDown size={18} />
-            </button>
+          <div className="flex flex-wrap gap-4 mt-10">
 
             <a
-              href="/resume.pdf"
-              download
-              className="secondary-button"
+              href="#projects"
+              className="px-7 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+            >
+              View Projects
+            </a>
+
+            <a
+              href={resumeUrl}
+              download="Kaustav_Nandi_Resume.pdf"
+              className="px-7 py-3 border border-blue-500 text-blue-400 rounded-lg font-semibold hover:bg-blue-500 hover:text-white transition"
             >
               Download Resume
-              <Download size={18} />
             </a>
 
           </div>
 
-          <div className="mt-10 flex items-center gap-4">
+          <div className="flex flex-wrap gap-5 mt-8">
 
             <a
-              href="#"
-              aria-label="GitHub"
-              className="social-button"
+              href="https://www.linkedin.com/in/kaustav-nandi2007/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
             >
-              <Github size={20} />
+              LinkedIn ↗
             </a>
 
             <a
-              href="#"
-              aria-label="LinkedIn"
-              className="social-button"
+              href="https://github.com/cool-zinger"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
             >
-              <Linkedin size={20} />
+              GitHub ↗
+            </a>
+
+            <a
+              href="https://cool-zinger.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              Portfolio ↗
             </a>
 
           </div>
+
         </div>
+
       </div>
     </section>
   );
 }
+
+export default Hero;

@@ -1,95 +1,113 @@
 import { useState } from "react";
 
-import {
-  Menu,
-  X
-} from "lucide-react";
+function Navbar() {
+  const [menuOpen, setMenuOpen] = useState(false);
 
-const links = [
-  ["Home", "home"],
-  ["About", "about"],
-  ["Skills", "skills"],
-  ["Projects", "projects"],
-  ["Resume", "resume"],
-  ["Contact", "contact"]
-];
-
-export default function Navbar() {
-
-  const [open, setOpen] = useState(false);
-
-  const scrollTo = (id) => {
-    document
-      .getElementById(id)
-      ?.scrollIntoView({
-        behavior: "smooth"
-      });
-
-    setOpen(false);
-  };
+  const navLinks = [
+    { name: "Home", href: "#home" },
+    { name: "About", href: "#about" },
+    { name: "Skills", href: "#skills" },
+    { name: "Projects", href: "#projects" },
+    { name: "Resume", href: "#resume" },
+    { name: "Achievements", href: "#achievements" },
+    { name: "Contact", href: "#contact" },
+  ];
 
   return (
-    <header className="fixed top-0 z-50 w-full border-b border-white/5 bg-black/60 backdrop-blur-xl">
+    <nav className="fixed top-0 left-0 w-full z-50 bg-slate-950/90 backdrop-blur-md border-b border-slate-800">
+      <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
 
-      <nav className="section-container flex h-20 items-center justify-between">
-
-        <button
-          onClick={() => scrollTo("home")}
-          className="text-xl font-bold text-white"
+        <a
+          href="#home"
+          className="text-2xl font-bold text-white"
         >
-          KN<span className="text-indigo-400">.</span>
-        </button>
+          Kaustav
+          <span className="text-blue-500">.</span>
+        </a>
 
-        <div className="hidden items-center gap-8 md:flex">
-
-          {links.map(([label, id]) => (
-
-            <button
-              key={id}
-              onClick={() => scrollTo(id)}
-              className="nav-link"
+        <div className="hidden md:flex items-center gap-7">
+          {navLinks.map((link) => (
+            <a
+              key={link.name}
+              href={link.href}
+              className="text-gray-300 hover:text-blue-500 transition"
             >
-              {label}
-            </button>
-
+              {link.name}
+            </a>
           ))}
+        </div>
+
+        <div className="hidden md:flex items-center gap-3">
+
+          <a
+            href="https://github.com/cool-zinger"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 border border-slate-700 rounded-lg text-gray-300 hover:border-blue-500 hover:text-blue-500 transition"
+          >
+            GitHub
+          </a>
+
+          <a
+            href="https://www.linkedin.com/in/kaustav-nandi2007/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="px-4 py-2 bg-blue-600 rounded-lg text-white hover:bg-blue-700 transition"
+          >
+            LinkedIn
+          </a>
 
         </div>
 
         <button
-          onClick={() => setOpen(!open)}
-          className="text-white md:hidden"
-          aria-label="Toggle navigation"
+          onClick={() => setMenuOpen(!menuOpen)}
+          className="md:hidden text-white text-2xl"
+          aria-label="Toggle navigation menu"
         >
-          {open ? <X /> : <Menu />}
+          ☰
         </button>
+      </div>
 
-      </nav>
+      {menuOpen && (
+        <div className="md:hidden bg-slate-950 border-t border-slate-800 px-6 py-5">
 
-      {open && (
+          <div className="flex flex-col gap-4">
 
-        <div className="border-t border-white/5 bg-black/95 px-6 py-6 md:hidden">
-
-          <div className="flex flex-col gap-5">
-
-            {links.map(([label, id]) => (
-
-              <button
-                key={id}
-                onClick={() => scrollTo(id)}
-                className="text-left text-zinc-300"
+            {navLinks.map((link) => (
+              <a
+                key={link.name}
+                href={link.href}
+                onClick={() => setMenuOpen(false)}
+                className="text-gray-300 hover:text-blue-500"
               >
-                {label}
-              </button>
-
+                {link.name}
+              </a>
             ))}
+
+            <a
+              href="https://github.com/cool-zinger"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-blue-500"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://www.linkedin.com/in/kaustav-nandi2007/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-300 hover:text-blue-500"
+            >
+              LinkedIn
+            </a>
 
           </div>
 
         </div>
-
       )}
-
-    </header>
+    </nav>
   );
 }
+
+export default Navbar;

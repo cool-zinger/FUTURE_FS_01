@@ -1,33 +1,69 @@
-import { Github, Linkedin } from "lucide-react";
-
-export default function Footer() {
+function Footer() {
   return (
-    <footer className="border-t border-white/5 py-10">
+    <footer className="bg-slate-950 border-t border-slate-800 px-6 py-10">
 
-      <div className="section-container flex flex-col items-center justify-between gap-5 text-center sm:flex-row sm:text-left">
+      <div className="max-w-7xl mx-auto">
 
-        <p className="text-sm text-zinc-500">
-          © {new Date().getFullYear()} Kaustav Nandi.
-          All rights reserved.
-        </p>
+        <div className="flex flex-col md:flex-row items-center justify-between gap-6">
 
-        <div className="flex gap-4">
+          <div>
 
-          <a
-            href="#"
-            className="social-button"
-            aria-label="GitHub"
-          >
-            <Github size={18} />
-          </a>
+            <h3 className="text-xl font-bold text-white">
+              Kaustav Nandi
+              <span className="text-blue-500">.</span>
+            </h3>
 
-          <a
-            href="#"
-            className="social-button"
-            aria-label="LinkedIn"
-          >
-            <Linkedin size={18} />
-          </a>
+            <p className="text-gray-500 mt-2">
+              Full Stack Developer • AI Enthusiast
+            </p>
+
+          </div>
+
+          <div className="flex flex-wrap justify-center gap-6">
+
+            <a
+              href="https://www.linkedin.com/in/kaustav-nandi2007/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              LinkedIn
+            </a>
+
+            <a
+              href="https://github.com/cool-zinger"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              GitHub
+            </a>
+
+            <a
+              href="https://cool-zinger.github.io/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              Portfolio
+            </a>
+
+            <a
+              href="#contact"
+              className="text-gray-400 hover:text-blue-500 transition"
+            >
+              Contact
+            </a>
+
+          </div>
+
+        </div>
+
+        <div className="border-t border-slate-800 mt-8 pt-6 text-center">
+
+          <p className="text-gray-500 text-sm">
+            © {new Date().getFullYear()} Kaustav Nandi. All rights reserved.
+          </p>
 
         </div>
 
@@ -36,3 +72,5 @@ export default function Footer() {
     </footer>
   );
 }
+
+export default Footer;

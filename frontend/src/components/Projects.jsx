@@ -95,22 +95,18 @@ export default function Projects() {
               <div className="mt-8 flex gap-3">
 
                 <a
-                  href={project.github}
-                  className="project-link"
+                  href="https://github.com/cool-zinger"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <Github size={17} />
                   GitHub
                 </a>
 
                 <a
-                  href={project.demo}
-                  className="project-link"
+                  href="https://cool-zinger.github.io/FUTURE_FS_01/"
                   target="_blank"
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
                 >
-                  <ArrowUpRight size={17} />
                   Live Demo
                 </a>
 

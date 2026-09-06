@@ -1,147 +1,115 @@
-import {
-  GraduationCap,
-  Code2,
-  Trophy,
-  BookOpen
-} from "lucide-react";
+function Resume() {
+  const resumeUrl = `${import.meta.env.BASE_URL}resume.pdf`;
 
-import {
-  education,
-  currentLearning,
-  achievements
-} from "../data/portfolioData";
-
-export default function Resume() {
   return (
     <section
       id="resume"
-      className="section-padding"
+      className="py-24 px-6 bg-slate-950"
     >
-      <div className="section-container">
+      <div className="max-w-6xl mx-auto">
 
-        <div className="section-heading">
-          <p className="section-eyebrow">
+        <div className="text-center mb-14">
+
+          <p className="text-blue-500 font-semibold uppercase tracking-widest">
             Resume
           </p>
 
-          <h2 className="section-title">
-            My
-            <span className="text-gradient">
-              {" "}journey.
-            </span>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mt-3">
+            My Resume
           </h2>
+
+          <p className="text-gray-400 mt-5 max-w-2xl mx-auto">
+            Explore my technical skills, projects, achievements and professional
+            development journey.
+          </p>
+
         </div>
 
-        <div className="grid gap-8 lg:grid-cols-2">
+        <div className="grid md:grid-cols-2 gap-8">
 
-          {/* Education */}
-          <div className="resume-panel">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8">
 
-            <div className="resume-heading">
-              <GraduationCap size={22} />
-              <h3>Education</h3>
-            </div>
+            <h3 className="text-2xl font-bold text-white mb-5">
+              Technical Profile
+            </h3>
 
-            <div className="timeline">
+            <div className="space-y-4 text-gray-400">
 
-              {education.map((item) => (
+              <p>
+                <span className="text-white font-semibold">
+                  Development:
+                </span>{" "}
+                React, JavaScript, HTML, CSS, Node.js and Express.
+              </p>
 
-                <div
-                  key={item.institution}
-                  className="timeline-item"
-                >
-                  <div className="timeline-dot" />
+              <p>
+                <span className="text-white font-semibold">
+                  Programming:
+                </span>{" "}
+                Python and SQL.
+              </p>
 
-                  <p className="text-sm text-indigo-400">
-                    {item.type}
-                  </p>
+              <p>
+                <span className="text-white font-semibold">
+                  Database:
+                </span>{" "}
+                MySQL.
+              </p>
 
-                  <h4 className="mt-1 text-xl font-semibold text-white">
-                    {item.institution}
-                  </h4>
+              <p>
+                <span className="text-white font-semibold">
+                  AI & Computer Vision:
+                </span>{" "}
+                Artificial Intelligence, OpenCV and intelligent application
+                development.
+              </p>
 
-                  <p className="mt-2 text-zinc-400">
-                    {item.program}
-                  </p>
-                </div>
-
-              ))}
-
-            </div>
-
-          </div>
-
-          {/* Learning */}
-          <div className="resume-panel">
-
-            <div className="resume-heading">
-              <BookOpen size={22} />
-              <h3>Currently Learning</h3>
-            </div>
-
-            <div className="mt-7 space-y-4">
-
-              {currentLearning.map((item, index) => (
-
-                <div
-                  key={item}
-                  className="learning-item"
-                >
-                  <span>
-                    0{index + 1}
-                  </span>
-
-                  <p>
-                    {item}
-                  </p>
-                </div>
-
-              ))}
+              <p>
+                <span className="text-white font-semibold">
+                  Tools:
+                </span>{" "}
+                Git, GitHub, VS Code and Linux.
+              </p>
 
             </div>
 
           </div>
 
-          {/* Achievement */}
-          <div className="resume-panel">
+          <div className="bg-slate-900 border border-slate-800 rounded-2xl p-8 flex flex-col justify-between">
 
-            <div className="resume-heading">
-              <Trophy size={22} />
-              <h3>Achievement</h3>
+            <div>
+
+              <h3 className="text-2xl font-bold text-white mb-4">
+                Download Resume
+              </h3>
+
+              <p className="text-gray-400 leading-relaxed">
+                Download my resume to learn more about my projects, technical
+                experience, achievements and skills.
+              </p>
+
             </div>
 
-            {achievements.map((achievement) => (
+            <div className="flex flex-col sm:flex-row gap-4 mt-8">
 
-              <div
-                key={achievement.title}
-                className="mt-7"
+              <a
+                href={resumeUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-center px-6 py-3 border border-slate-700 text-white rounded-lg hover:border-blue-500 hover:text-blue-500 transition"
               >
-                <h4 className="text-xl font-semibold text-white">
-                  {achievement.title}
-                </h4>
+                View Resume
+              </a>
 
-                <p className="mt-3 leading-7 text-zinc-400">
-                  {achievement.description}
-                </p>
-              </div>
+              <a
+                href={resumeUrl}
+                download="Kaustav_Nandi_Resume.pdf"
+                className="text-center px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
+              >
+                Download Resume
+              </a>
 
-            ))}
-
-          </div>
-
-          {/* Focus */}
-          <div className="resume-panel">
-
-            <div className="resume-heading">
-              <Code2 size={22} />
-              <h3>Professional Focus</h3>
             </div>
-
-            <p className="mt-7 leading-8 text-zinc-400">
-              Building practical solutions through artificial
-              intelligence, computer vision, software development,
-              cybersecurity, automation and emerging technologies.
-            </p>
 
           </div>
 
@@ -151,3 +119,5 @@ export default function Resume() {
     </section>
   );
 }
+
+export default Resume;
